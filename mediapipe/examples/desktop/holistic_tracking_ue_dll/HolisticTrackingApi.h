@@ -74,7 +74,7 @@ struct Point2D;
 
     EXPORT_API int Mediapipe_Hand_Tracking_Box_Register(int hotBoxLeftTopX,int hotBoxLeftTopY,int hotBoxRightBottomX,int hotBoxRightBottomY ,int okGester);
 
-
+    EXPORT_API void MediapipeHolisticTrackingDrawPoseLandmarksTest(int image_width, int image_height, void* image_data,Point2D* PoseLandmarks,const char* writeimageFullPath);
 #ifdef __cplusplus
 }
 #endif 

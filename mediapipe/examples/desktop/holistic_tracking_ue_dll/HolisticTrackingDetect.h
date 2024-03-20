@@ -33,6 +33,7 @@ namespace GoogleMediapipeDetect {
 		int DetectCamera(bool show_image = false);
 
         int BoxRegister(int hotBoxLeftTopX,int hotBoxLeftTopY,int hotBoxRightBottomX,int hotBoxRightBottomY ,int okGester);
+        void DrawPoseLandmarksTest(int image_width, int image_height, void* image_data,Point2D* PoseLandmarks,const char* writeimageFullPath);
 
 		int Release();
 

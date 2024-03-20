@@ -62,7 +62,122 @@ int GoogleMediapipeDetect::HolisticTrackingDetect::BoxRegister(int hotBoxLeftTop
 
     return 1;
 }
+void GoogleMediapipeDetect::HolisticTrackingDetect::DrawPoseLandmarksTest(int image_width, int image_height, void* image_data,Point2D* posePoints,const char* writeimageFullPath){
+    cv::Mat frame(cv::Size(image_width, image_height), CV_8UC4, (uchar*)image_data);
+    Point2D point0 = posePoints[0];
+    cv::Scalar color(255, 0, 0); // BGR 格式的颜色，这里是蓝色
+    cv::Scalar linecolor(0, 0, 255); // BGR 格式的颜色
+    int lineType = cv::LINE_8; // 8 连通线
+    // 定义线的类型，这里使用实线，线宽为 2
+    int linethickness = 2;
+    int thickness = -1; // 如果厚度设置为负数（如 -1），则绘制一个填充的圆，类似于点
+    int radius = 2; // 点的半径，可以根据需要调整大小
+    // 在图像上绘制点
+    cv::circle(frame, cv::Point(point0.x*frame.cols, point0.y*frame.rows), radius, color, thickness);
 
+    Point2D point1 = posePoints[1];
+    cv::line(frame, cv::Point(point0.x * frame.cols, point0.y * frame.rows), cv::Point(point1.x * frame.cols, point1.y * frame.rows), linecolor, linethickness, lineType);
+    cv::circle(frame, cv::Point(point1.x * frame.cols, point1.y), radius, color, thickness);
+    Point2D point2 = posePoints[2];
+    cv::line(frame, cv::Point(point1.x * frame.cols, point1.y * frame.rows), cv::Point(point2.x * frame.cols, point2.y * frame.rows), linecolor, linethickness, lineType);
+
+    cv::circle(frame, cv::Point(point2.x * frame.cols, point2.y * frame.rows), radius, color, thickness);
+    Point2D point3 = posePoints[3];
+    cv::line(frame, cv::Point(point2.x * frame.cols, point2.y * frame.rows), cv::Point(point3.x * frame.cols, point3.y * frame.rows), linecolor, linethickness, lineType);
+    cv::circle(frame, cv::Point(point3.x * frame.cols, point3.y * frame.rows), radius, color, thickness);
+    Point2D point4 = posePoints[4];
+    cv::circle(frame, cv::Point(point4.x * frame.cols, point4.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point0.x * frame.cols, point0.y * frame.rows), cv::Point(point4.x * frame.cols, point4.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point5 = posePoints[5];
+    cv::circle(frame, cv::Point(point5.x * frame.cols, point5.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point4.x * frame.cols, point4.y * frame.rows), cv::Point(point5.x * frame.cols, point5.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point6 = posePoints[6];
+    cv::circle(frame, cv::Point(point6.x * frame.cols, point6.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point5.x * frame.cols, point5.y * frame.rows), cv::Point(point6.x * frame.cols, point6.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point7 = posePoints[7];
+    cv::circle(frame, cv::Point(point7.x * frame.cols, point7.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point3.x * frame.cols, point3.y * frame.rows), cv::Point(point7.x * frame.cols, point7.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point8 = posePoints[8];
+    cv::circle(frame, cv::Point(point8.x * frame.cols, point8.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point6.x * frame.cols, point6.y * frame.rows), cv::Point(point8.x * frame.cols, point8.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point9 = posePoints[9];
+    cv::circle(frame, cv::Point(point9.x * frame.cols, point9.y * frame.rows), radius, color, thickness);
+    Point2D point10 = posePoints[10];
+    cv::circle(frame, cv::Point(point10.x * frame.cols, point10.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point9.x * frame.cols, point9.y * frame.rows), cv::Point(point10.x * frame.cols, point10.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point11 = posePoints[11];
+    cv::circle(frame, cv::Point(point11.x * frame.cols, point11.y * frame.rows), radius, color, thickness);
+    Point2D point12 = posePoints[12];
+    cv::circle(frame, cv::Point(point12.x * frame.cols, point12.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point11.x * frame.cols, point11.y * frame.rows), cv::Point(point12.x * frame.cols, point12.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point13 = posePoints[13];
+    cv::circle(frame, cv::Point(point13.x * frame.cols, point13.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point11.x * frame.cols, point11.y * frame.rows), cv::Point(point13.x * frame.cols, point13.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point14 = posePoints[14];
+    cv::circle(frame, cv::Point(point14.x * frame.cols, point14.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point12.x * frame.cols, point12.y * frame.rows), cv::Point(point14.x * frame.cols, point14.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point15 = posePoints[15];
+    cv::circle(frame, cv::Point(point15.x * frame.cols, point15.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point13.x * frame.cols, point13.y * frame.rows), cv::Point(point15.x * frame.cols, point15.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point16 = posePoints[16];
+    cv::circle(frame, cv::Point(point16.x * frame.cols, point16.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point14.x * frame.cols, point14.y * frame.rows), cv::Point(point16.x * frame.cols, point16.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point17 = posePoints[17];
+    cv::circle(frame, cv::Point(point17.x * frame.cols, point17.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point15.x * frame.cols, point15.y * frame.rows), cv::Point(point17.x * frame.cols, point17.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point18 = posePoints[18];
+    cv::circle(frame, cv::Point(point18.x * frame.cols, point18.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point16.x * frame.cols, point16.y * frame.rows), cv::Point(point18.x * frame.cols, point18.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point19 = posePoints[19];
+    cv::circle(frame, cv::Point(point19.x * frame.cols, point19.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point17.x * frame.cols, point17.y * frame.rows), cv::Point(point19.x * frame.cols, point19.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point20 = posePoints[20];
+    cv::circle(frame, cv::Point(point20.x * frame.cols, point20.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point18.x * frame.cols, point18.y * frame.rows), cv::Point(point20.x * frame.cols, point20.y * frame.rows), linecolor, linethickness, lineType);
+    cv::line(frame, cv::Point(point20.x * frame.cols, point20.y * frame.rows), cv::Point(point16.x * frame.cols, point16.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point21 = posePoints[21];
+    cv::circle(frame, cv::Point(point21.x * frame.cols, point21.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point19.x * frame.cols, point19.y * frame.rows), cv::Point(point21.x * frame.cols, point21.y * frame.rows), linecolor, linethickness, lineType);
+    cv::line(frame, cv::Point(point15.x * frame.cols, point15.y * frame.rows), cv::Point(point21.x * frame.cols, point21.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point22 = posePoints[22];
+    cv::circle(frame, cv::Point(point22.x * frame.cols, point22.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point16.x * frame.cols, point16.y * frame.rows), cv::Point(point22.x * frame.cols, point22.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point23 = posePoints[23];
+    cv::circle(frame, cv::Point(point23.x * frame.cols, point23.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point11.x * frame.cols, point11.y * frame.rows), cv::Point(point23.x * frame.cols, point23.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point24 = posePoints[24];
+    cv::circle(frame, cv::Point(point24.x * frame.cols, point24.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point12.x * frame.cols, point12.y * frame.rows), cv::Point(point24.x * frame.cols, point24.y * frame.rows), linecolor, linethickness, lineType);
+    cv::line(frame, cv::Point(point23.x * frame.cols, point23.y * frame.rows), cv::Point(point24.x * frame.cols, point24.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point25 = posePoints[25];
+    cv::circle(frame, cv::Point(point25.x * frame.cols, point25.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point23.x * frame.cols, point23.y * frame.rows), cv::Point(point25.x * frame.cols, point25.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point26 = posePoints[26];
+    cv::circle(frame, cv::Point(point26.x * frame.cols, point26.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point24.x * frame.cols, point24.y * frame.rows), cv::Point(point26.x * frame.cols, point26.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point27 = posePoints[27];
+    cv::circle(frame, cv::Point(point27.x * frame.cols, point27.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point25.x * frame.cols, point25.y * frame.rows), cv::Point(point27.x * frame.cols, point27.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point28 = posePoints[28];
+    cv::circle(frame, cv::Point(point28.x * frame.cols, point28.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point26.x * frame.cols, point26.y * frame.rows), cv::Point(point28.x * frame.cols, point28.y * frame.rows), linecolor, linethickness, lineType);
+    Point2D point29 = posePoints[29];
+    cv::circle(frame, cv::Point(point29.x * frame.cols, point29.y * frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point27.x* frame.cols, point27.y* frame.rows), cv::Point(point29.x* frame.cols, point29.y* frame.rows), linecolor, linethickness, lineType);
+    Point2D point30 = posePoints[30];
+    cv::circle(frame, cv::Point(point30.x* frame.cols, point30.y* frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point28.x* frame.cols, point28.y* frame.rows), cv::Point(point30.x* frame.cols, point30.y* frame.rows), linecolor, linethickness, lineType);
+    Point2D point31 = posePoints[31];
+    cv::circle(frame, cv::Point(point31.x* frame.cols, point31.y* frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point29.x* frame.cols, point29.y* frame.rows), cv::Point(point31.x* frame.cols, point31.y* frame.rows), linecolor, linethickness, lineType);
+    cv::line(frame, cv::Point(point31.x* frame.cols, point31.y* frame.rows), cv::Point(point27.x* frame.cols, point27.y* frame.rows), linecolor, linethickness, lineType);
+    Point2D point32 = posePoints[32];
+    cv::circle(frame, cv::Point(point32.x* frame.cols, point32.y* frame.rows), radius, color, thickness);
+    cv::line(frame, cv::Point(point30.x* frame.cols, point30.y* frame.rows), cv::Point(point32.x* frame.cols, point32.y* frame.rows), linecolor, linethickness, lineType);
+    cv::line(frame, cv::Point(point32.x* frame.cols, point32.y* frame.rows), cv::Point(point28.x* frame.cols, point28.y* frame.rows), linecolor, linethickness, lineType);
+   // cv::cvtColor(frame, frame, cv::COLOR_RGB2BGR);
+    cv::imwrite(writeimageFullPath, frame);
+}
 int GoogleMediapipeDetect::HolisticTrackingDetect::WriteLog(absl::Status msg){
     ofstream outfile ;
     outfile.open("C:/mediapipeLibs/MediapipeHolisticTrackingDetect.txt",ios::app); //文件的物理地址，文件的打开方式
@@ -185,93 +300,74 @@ absl::Status GoogleMediapipeDetect::HolisticTrackingDetect::Mediapipe_RunMPPGrap
 	}
 
     // 3 LeftHandLandmarks
-    mediapipe::Packet leftHandLandmarksPacket;
-    int leftHandDetectResult = Gesture::NoGesture;
-    if (m_pLeftHandLandmarksPoller->QueueSize() > 0)
-    {
-        if (m_pLeftHandLandmarksPoller->Next(&leftHandLandmarksPacket))
-        {
-            auto& output_landmarks = leftHandLandmarksPacket.Get<mediapipe::NormalizedLandmarkList>();
-            //std::cout << "LeftHandLandmarks size:" << output_landmarks.landmark_size() << std::endl;
-
-            std::vector<Point2D> singleGesturePoints;
-            singleGesturePoints.clear();
-
-            for (int i = 0; i < output_landmarks.landmark_size(); ++i)
-            {
-                Point2D tempPoint2D;
-                const mediapipe::NormalizedLandmark landmark = output_landmarks.landmark(i);
-                float x = landmark.x() * camera_frame.cols;
-                float y = landmark.y() * camera_frame.rows;
-                tempPoint2D.x = x;
-                tempPoint2D.y = y;
-                LeftHandLandmarks[i].x = x;
-                LeftHandLandmarks[i].y = y;
-                singleGesturePoints.emplace_back(tempPoint2D);
-            }
-
-            GestureRecognition gestureRecognition;
-            leftHandDetectResult = gestureRecognition.RecognizeProcess(singleGesturePoints);
-            //std::cout << "左手手势识别结果：" << leftHandDetectResult << std::endl;
-        }
-    }
-    detect_result[2] = leftHandDetectResult;
+//    mediapipe::Packet leftHandLandmarksPacket;
+//    int leftHandDetectResult = Gesture::NoGesture;
+//    if (m_pLeftHandLandmarksPoller->QueueSize() > 0)
+//    {
+//        if (m_pLeftHandLandmarksPoller->Next(&leftHandLandmarksPacket))
+//        {
+//            auto& output_landmarks = leftHandLandmarksPacket.Get<mediapipe::NormalizedLandmarkList>();
+//            //std::cout << "LeftHandLandmarks size:" << output_landmarks.landmark_size() << std::endl;
+//
+//            std::vector<Point2D> singleGesturePoints;
+//            singleGesturePoints.clear();
+//
+//            for (int i = 0; i < output_landmarks.landmark_size(); ++i)
+//            {
+//                Point2D tempPoint2D;
+//                const mediapipe::NormalizedLandmark landmark = output_landmarks.landmark(i);
+//                float x = landmark.x() * camera_frame.cols;
+//                float y = landmark.y() * camera_frame.rows;
+//                tempPoint2D.x = x;
+//                tempPoint2D.y = y;
+//                LeftHandLandmarks[i].x = x;
+//                LeftHandLandmarks[i].y = y;
+//                singleGesturePoints.emplace_back(tempPoint2D);
+//            }
+//
+//            GestureRecognition gestureRecognition;
+//            leftHandDetectResult = gestureRecognition.RecognizeProcess(singleGesturePoints);
+//            //std::cout << "左手手势识别结果：" << leftHandDetectResult << std::endl;
+//        }
+//    }
+//    detect_result[2] = leftHandDetectResult;
 
     // 4 RightHandLandmarks
-    mediapipe::Packet rightHandLandmarksPacket;
-    int rightHandDetectResult = Gesture::NoGesture;
-    if (m_pRightHandLandmarksPoller->QueueSize() > 0)
-    {
-        if (m_pRightHandLandmarksPoller->Next(&rightHandLandmarksPacket))
-        {
-            auto& output_landmarks = rightHandLandmarksPacket.Get<mediapipe::NormalizedLandmarkList>();
-            //std::cout << "RightHandLandmarks size:" << output_landmarks.landmark_size() << std::endl;
-
-            std::vector<Point2D> singleGesturePoints;
-            singleGesturePoints.clear();
-
-            for (int i = 0; i < output_landmarks.landmark_size(); ++i)
-            {
-                Point2D tempPoint2D;
-                const mediapipe::NormalizedLandmark landmark = output_landmarks.landmark(i);
-                float x = landmark.x() * camera_frame.cols;
-                float y = landmark.y() * camera_frame.rows;
-                tempPoint2D.x = x;
-                tempPoint2D.y = y;
-                RightHandLandmarks[i].x = x;
-                RightHandLandmarks[i].y = y;
-                singleGesturePoints.emplace_back(tempPoint2D);
-            }
-
-            GestureRecognition gestureRecognition;
-            rightHandDetectResult = gestureRecognition.RecognizeProcess(singleGesturePoints);
-            //std::cout << "右手手势识别结果：" << rightHandDetectResult << std::endl;
-
-        }
-    }
-    detect_result[3] = rightHandDetectResult;
+//    mediapipe::Packet rightHandLandmarksPacket;
+//    int rightHandDetectResult = Gesture::NoGesture;
+//    if (m_pRightHandLandmarksPoller->QueueSize() > 0)
+//    {
+//        if (m_pRightHandLandmarksPoller->Next(&rightHandLandmarksPacket))
+//        {
+//            auto& output_landmarks = rightHandLandmarksPacket.Get<mediapipe::NormalizedLandmarkList>();
+//            //std::cout << "RightHandLandmarks size:" << output_landmarks.landmark_size() << std::endl;
+//
+//            std::vector<Point2D> singleGesturePoints;
+//            singleGesturePoints.clear();
+//
+//            for (int i = 0; i < output_landmarks.landmark_size(); ++i)
+//            {
+//                Point2D tempPoint2D;
+//                const mediapipe::NormalizedLandmark landmark = output_landmarks.landmark(i);
+//                float x = landmark.x() * camera_frame.cols;
+//                float y = landmark.y() * camera_frame.rows;
+//                tempPoint2D.x = x;
+//                tempPoint2D.y = y;
+//                RightHandLandmarks[i].x = x;
+//                RightHandLandmarks[i].y = y;
+//                singleGesturePoints.emplace_back(tempPoint2D);
+//            }
+//
+//            GestureRecognition gestureRecognition;
+//            rightHandDetectResult = gestureRecognition.RecognizeProcess(singleGesturePoints);
+//            //std::cout << "右手手势识别结果：" << rightHandDetectResult << std::endl;
+//
+//        }
+//    }
+//    detect_result[3] = rightHandDetectResult;
 
 	// 5 PoseLandmarks
 	mediapipe::Packet poseeLandmarksPacket;
-
-    int left_arm_waved_updown_result = (int)ArmWaved::NoArmWavedResult;
-    int right_arm_waved_updown_result = (int)ArmWaved::NoArmWavedResult;
-    int left_arm_waved_leftright_result = (int)ArmWaved::NoArmWavedResult;
-    int right_arm_waved_leftright_result = (int)ArmWaved::NoArmWavedResult;
-
-    int left_hand_position_result = (int)HandPosition::HandPosition_No;
-    int right_hand_position_result = (int)HandPosition::HandPosition_No;
-    int pose_result = PoseDisplay::PoseDisplay_No;
-
-
-    int left_arm_up_down_result_DIFF;
-    int right_arm_up_down_result_DIFF;
-
-    int left_arm_left_right_result_DIFF;
-    int right_arm_left_right_result_DIFF;
-
-    Point2D leftHandPoint;
-    Point2D rightHandPoint;
 	if (m_pPoseLandmarksPoller->QueueSize() != 0)
 	{
 		if (m_pPoseLandmarksPoller->Next(&poseeLandmarksPacket))
@@ -286,16 +382,18 @@ absl::Status GoogleMediapipeDetect::HolisticTrackingDetect::Mediapipe_RunMPPGrap
 			{
 				Point2D tempPoint2D;
 				const mediapipe::NormalizedLandmark landmark = output_landmarks.landmark(i);
-				float x = landmark.x() * camera_frame.cols;
-				float y = landmark.y() * camera_frame.rows;
+//				float x = landmark.x() * camera_frame.cols;
+//				float y = landmark.y() * camera_frame.rows;
+                float x = landmark.x() ;
+                float y = landmark.y() ;
 				tempPoint2D.x = x;
 				tempPoint2D.y = y;
                 PoseLandmarks[i].x = x;
                 PoseLandmarks[i].y = y;
-				posePoints.emplace_back(tempPoint2D);
+				//posePoints.emplace_back(tempPoint2D);
 
 			}
-            leftHandPoint.x = PoseLandmarks[15].x;
+           /* leftHandPoint.x = PoseLandmarks[15].x;
             leftHandPoint.y = PoseLandmarks[15].y;
 			rightHandPoint.x = PoseLandmarks[16].x;
             rightHandPoint.y = PoseLandmarks[16].y;
@@ -327,9 +425,9 @@ absl::Status GoogleMediapipeDetect::HolisticTrackingDetect::Mediapipe_RunMPPGrap
                 }
 
                 isGestureOK = leftGestureOK || rightGestureOK;
-            }
+            }*/
             
-			ArmUpAndDownRecognition armUpAndDownRecognition;
+			/*ArmUpAndDownRecognition armUpAndDownRecognition;
 			armUpAndDownRecognition.RecognizeProcess(posePoints,
                                                      m_left_arm_current_result,
                                                      m_right_arm_current_result,
@@ -358,10 +456,10 @@ absl::Status GoogleMediapipeDetect::HolisticTrackingDetect::Mediapipe_RunMPPGrap
             HandsPositionRecognition handsPositionRecognition;
             handsPositionRecognition.PositionRecognizeProcess(posePoints,left_hand_position_result,right_hand_position_result);
             LovePoseRecognition lovePoseRecognition;
-            lovePoseRecognition.PoseRecognizeProcess(posePoints,pose_result);
+            lovePoseRecognition.PoseRecognizeProcess(posePoints,pose_result);*/
 		}
 	}
-
+/*
 	ArmWavedRecognition armWavedRecognition;
 	armWavedRecognition.WavedRecognizeProcess(m_left_arm_result_list,m_right_arm_result_list,m_left_arm_leftRight_result_list,m_right_arm_leftRight_result_list,left_arm_waved_updown_result,right_arm_waved_updown_result,left_arm_waved_leftright_result,right_arm_waved_leftright_result);
 
@@ -402,7 +500,7 @@ absl::Status GoogleMediapipeDetect::HolisticTrackingDetect::Mediapipe_RunMPPGrap
     m_left_arm_pre_result = m_left_arm_current_result;
     m_right_arm_pre_result = m_right_arm_current_result;
     m_left_arm_pre_leftRight_result = m_left_arm_current_leftRight_result;
-    m_right_arm_pre_leftRight_result = m_right_arm_current_leftRight_result;
+    m_right_arm_pre_leftRight_result = m_right_arm_current_leftRight_result;*/
 
 	return absl::OkStatus();
 }

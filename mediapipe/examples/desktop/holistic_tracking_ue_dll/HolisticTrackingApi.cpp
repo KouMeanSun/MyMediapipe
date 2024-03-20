@@ -29,3 +29,6 @@ EXPORT_API int MediapipeHolisticTrackingRelease()
 EXPORT_API int Mediapipe_Hand_Tracking_Box_Register(int hotBoxLeftTopX,int hotBoxLeftTopY,int hotBoxRightBottomX,int hotBoxRightBottomY ,int okGester){
     return m_HolisticTrackingDetect.BoxRegister(hotBoxLeftTopX,hotBoxLeftTopY,hotBoxRightBottomX,hotBoxRightBottomY,okGester);
 }
+EXPORT_API void MediapipeHolisticTrackingDrawPoseLandmarksTest(int image_width, int image_height, void* image_data,Point2D* PoseLandmarks,const char* writeimageFullPath){
+    return m_HolisticTrackingDetect.DrawPoseLandmarksTest(image_width,image_height,image_data,PoseLandmarks,writeimageFullPath);
+}
